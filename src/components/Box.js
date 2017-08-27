@@ -20,6 +20,7 @@ class Box extends Component{
 
     componentWillMount() {
         var user = firebase.auth().currentUser;
+        console.log('Usuario: ' + user.displayName)
         this.setState({
             user: user.displayName
         })
@@ -63,18 +64,21 @@ class Box extends Component{
                         <Text style={{fontSize: 10, color: 'white', fontWeight: 'bold'}}>Cerrar sesión</Text>
                     </View>
                 </View>
-                <View>
-                    <TouchableHighlight
-                        onPress={this.myTask.bind(this)} style={commonStyles.boton}
-                        >
-                        <Text style={commonStyles.textoBoton} >Mis Tareas</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight
-                        onPress={this.newTask.bind(this)} style={commonStyles.boton}
-                        >
-                        <Text style={commonStyles.textoBoton} >Crear Tarea</Text>
-                    </TouchableHighlight>
-                </View>
+                        <View style={styles.user} >
+                            <TouchableHighlight
+                                onPress={this.myTask.bind(this)} style={styles.item}
+                                >
+                                <Text style={commonStyles.textoBoton} >Mis Tareas</Text>
+                            </TouchableHighlight>
+                        </View>
+                    
+                        <View style={styles.user} >
+                            <TouchableHighlight
+                                onPress={this.newTask.bind(this)} style={styles.item}
+                                >
+                                <Text style={commonStyles.textoBoton} >Crear Tarea</Text>
+                            </TouchableHighlight>
+                        </View>
             </View>
         )
     }
@@ -82,7 +86,7 @@ class Box extends Component{
 
 const styles = StyleSheet.create({
     container: {
-        flex: 2,
+        flex: 1,
         flexDirection: 'column',
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
@@ -104,6 +108,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginLeft: 8,
         marginRight: 8
+    },
+    item:{
+        flex: 1,
+        alignItems: 'flex-start',
+        justifyContent: 'center',
     }
 })
 

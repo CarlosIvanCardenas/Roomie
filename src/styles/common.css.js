@@ -19,24 +19,6 @@ const Common = {
         fontWeight: '800',
         marginBottom: 15
     },
-    navBar: {
-        width: 360,
-        height: 55,
-        backgroundColor: '#243e92',  
-        elevation: 3,
-    },
-    navBarContainer: {
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        paddingLeft: 60,
-    },
-    navBarTitle: {
-        color: 'white',
-        fontSize: 20,
-        fontWeight: 'bold',
-    },
     boton:{
         width: 325,
         height: 55,

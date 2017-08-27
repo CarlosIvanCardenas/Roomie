@@ -43,7 +43,16 @@ class signupView extends Component {
             user.updateProfile({
                 displayName: this.state.user
             })
-            Actions.dashboard();
+            firebase.database().ref().child('users').child(user.uid).set({
+                name: this.state.user
+            });
+            firebase.auth().signInWithEmailAndPassword(this.state.email,this.state.password).then((user)=>{
+                console.log(user)
+                Actions.dashboard()
+            }).catch((e)=>{
+                console.log(e)
+                alert(e.message)
+            })
         }).catch((e)=>{
             console.log(e);
             alert(e.message)

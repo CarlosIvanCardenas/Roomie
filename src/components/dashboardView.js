@@ -20,15 +20,19 @@ class dashboardView extends Component {
         super(props);
         this.state = { 
             user: '',
-            page: 'tasks'
+            page: ''
         };
     }
 
     componentWillMount() {
         var user = firebase.auth().currentUser;
         this.setState({
-            user: user.displayName
+            user: user.displayName,
         })
+    }
+
+    componentDidMount(){
+        this.setState({page:'tasks'});
     }
 
     closeControlPanel = () => {

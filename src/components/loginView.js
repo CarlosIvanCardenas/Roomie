@@ -44,7 +44,7 @@ class loginView extends Component {
                     <TextInput 
                         style={commonStyles.input} 
                         onChangeText={(email) => this.setState({email})}
-                        value={this.state.user}
+                        value={this.state.email}
                         placeholder={'Usuario'}
                         placeholderTextColor="white"
                         underlineColorAndroid='transparent'
