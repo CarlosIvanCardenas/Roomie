@@ -10,6 +10,7 @@ import {
 import { Actions } from "react-native-router-flux";
 import * as firebase from 'firebase';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import commonStyles from "../styles/common.css";
 
 class Box extends Component{
     constructor(props) {
@@ -34,7 +35,13 @@ class Box extends Component{
         })
     }
 
-    
+    myTask(){
+        this.props.changeRoute('tasks')
+    }
+
+    newTask(){
+        this.props.changeRoute('new')
+    }
 
     render(){
         return(
@@ -58,12 +65,12 @@ class Box extends Component{
                 </View>
                 <View>
                     <TouchableHighlight
-                        onPress={this.signup.bind(this)} style={commonStyles.boton}
+                        onPress={this.myTask.bind(this)} style={commonStyles.boton}
                         >
                         <Text style={commonStyles.textoBoton} >Mis Tareas</Text>
                     </TouchableHighlight>
                     <TouchableHighlight
-                        onPress={this.signup.bind(this)} style={commonStyles.boton}
+                        onPress={this.newTask.bind(this)} style={commonStyles.boton}
                         >
                         <Text style={commonStyles.textoBoton} >Crear Tarea</Text>
                     </TouchableHighlight>

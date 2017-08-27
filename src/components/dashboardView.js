@@ -12,6 +12,8 @@ import commonStyles from "../styles/common.css";
 import * as firebase from 'firebase';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Box from './Box'
+import MyTasks from './MyTasks'
+import NewTask from './NewTask'
 
 class dashboardView extends Component {
     constructor(props) {
@@ -36,12 +38,17 @@ class dashboardView extends Component {
         this._drawer.open()
     };
 
+    changeRoute(route){
+        this.setState({page:route});
+        this._drawer.close()
+    }
+
     render() {
         return(
             <Drawer
                 ref={(ref) => this._drawer = ref}
                 type="static"
-                content={<Box />}
+                content={<Box changeRoute={this.changeRoute.bind(this)}/>}
                 openDrawerOffset={100}
                 style={{elevation: 10, width: 100}}
                 tweenHandler={Drawer.tweenPresets.parallax}
@@ -59,7 +66,8 @@ class dashboardView extends Component {
                             <Text style={styles.navTitle} >Dashboard</Text>
                         </View>
                     </View>
-                    
+                    {this.state.page == 'tasks' ? <MyTasks /> : null}
+                    {this.state.page == 'new' ? <NewTask /> : null}
             </Drawer>
             
         )
